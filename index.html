@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Interest Calculator (PWA)</title>
+  <meta name="theme-color" content="#0b5cff">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Interest Calculator</h1>
+      <p class="lede">Calculate monthly interest between two dates — offline & installable.</p>
+    </header>
+
+    <section class="card">
+      <form id="calcForm" novalidate>
+        <div class="grid">
+          <label>
+            Start date
+            <input type="date" id="startDate" required aria-required="true">
+            <span class="error" id="startDateError" aria-live="polite"></span>
+          </label>
+
+          <label>
+            End date
+            <input type="date" id="endDate" required aria-required="true">
+            <span class="error" id="endDateError" aria-live="polite"></span>
+          </label>
+
+          <label>
+            Principal (INR)
+            <input type="number" id="principal" inputmode="decimal" step="0.01" min="0.01" required>
+            <span class="error" id="principalError" aria-live="polite"></span>
+          </label>
+
+          <label>
+            Interest per month (%)
+            <input type="number" id="monthlyRate" inputmode="decimal" step="0.01" min="0">
+            <span class="error" id="rateError" aria-live="polite"></span>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="calculateBtn" class="btn primary">Calculate</button>
+          <button type="button" id="resetBtn" class="btn">Reset</button>
+          <button type="button" id="installBtn" class="btn" hidden>Install</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card" id="resultsCard" aria-live="polite">
+      <h2>Results</h2>
+      <div id="results" class="results-grid" hidden>
+        <div><strong>Months (whole)</strong><div id="monthsWhole">—</div></div>
+        <div><strong>Months (decimal)</strong><div id="monthsDecimal">—</div></div>
+        <div><strong>Principal</strong><div id="principalFmt">—</div></div>
+        <div><strong>Interest</strong><div id="interestFmt">—</div></div>
+        <div><strong>Total</strong><div id="totalFmt">—</div></div>
+      </div>
+
+      <details id="breakdownDetails" hidden>
+        <summary>Monthly breakdown</summary>
+        <div class="table-wrap">
+          <table id="breakdownTable" aria-describedby="breakdownDesc">
+            <thead>
+              <tr><th>#</th><th>Period</th><th>Interest</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p id="breakdownDesc" class="sr-only">Breakdown of interest per month and fractional month.</p>
+        </div>
+      </details>
+    </section>
+
+    <footer class="muted">Built as a Progressive Web App • <a href="https://github.com/rakeshbaddam1008/IntrestClaculator">Repository</a></footer>
+  </main>
+
+  <script src="src/calc.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

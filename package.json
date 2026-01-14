@@ -1,0 +1,12 @@
+{
+  "name": "interest-calculator",
+  "version": "0.1.0",
+  "description": "Progressive Web App to calculate monthly interest between dates",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
